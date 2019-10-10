@@ -1,12 +1,6 @@
-const {
-	NUMBERS,
-	TEXTS,
-	VARIABLES,
-	NUMBER_TEXT_MAP,
-	NUMBER_LIST,
-	EMPTY_STRING
-} = require('./constants');
-const { isDivisible, getRemainder, isNumber } = require('./utils');
+const { NUMBER_TEXT_MAP, NUMBER_LIST, EMPTY_STRING } = require('./constants');
+const { isDivisible, getRemainder } = require('./utils');
+const { validate } = require('./validators');
 
 function FooBarQix(input) {
 	// Validates if input is a number
@@ -14,10 +8,6 @@ function FooBarQix(input) {
 	let output = dividedByNumber(input) + containsNumber(input);
 
 	return output || input;
-}
-
-function validate(input) {
-	if (!isNumber(input)) throw new Error('Non numericals not allowed.');
 }
 
 function dividedByNumber(input) {
@@ -37,8 +27,8 @@ function containsNumber(input) {
 	// Split each letter into each element of an array
 	let inputArray = String(input).split(EMPTY_STRING);
 
-	inputArray.forEach((inputLetter) => {
-		let index = NUMBER_LIST.find((number) => number === Number(inputLetter));
+	inputArray.forEach((digit) => {
+		let index = NUMBER_LIST.find((number) => number === Number(digit));
 		if (index) outputArray.push(NUMBER_TEXT_MAP[index]);
 	});
 
