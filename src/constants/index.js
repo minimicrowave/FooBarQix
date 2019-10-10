@@ -12,8 +12,11 @@ const TEXTS = {
 
 const VARIABLES = [ 'foo', 'bar', 'qix' ];
 
+const EMPTY_STRING = '';
+
 module.exports = {
 	NUMBERS,
 	TEXTS,
-	VARIABLES
+    VARIABLES,
+    EMPTY_STRING
 };
