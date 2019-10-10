@@ -1,4 +1,5 @@
 const { NUMBERS, TEXTS, VARIABLES } = require('./constants');
+const { isDivisible, getRemainder, isNumber } = require('./utils');
 
 function FooBarQix(input) {
 	let output = '';
@@ -6,7 +7,8 @@ function FooBarQix(input) {
 	// Validates if input is a number
 	validate(input);
 	output += dividedByNumber(input);
-	return output;
+	output += containsNumber(input);
+	return output || input;
 }
 
 function validate(input) {
@@ -17,7 +19,7 @@ function dividedByNumber(input) {
 	let outputArray = [];
 	VARIABLES.forEach((variable) => {
 		let number = NUMBERS[variable];
-		if (isDivisible(input, number) && input !== number) {
+		if (isDivisible(input, number)) {
 			outputArray.push(TEXTS[variable]);
 			input = getRemainder(input, number);
 		}
@@ -26,27 +28,19 @@ function dividedByNumber(input) {
 	return outputArray.join('');
 }
 
-// function containsNumber(input) {
-// 	input = convertToString(input);
-// }
+function containsNumber(input) {
+	let outputArray = [];
+	// Split each letter into each element of an array
+	let inputArray = input.toString().split('');
 
-function isDivisible(input, divisor) {
-	return input % divisor === 0;
+	inputArray.forEach((inputLetter) => {
+		let index = VARIABLES.find((key) => NUMBERS[key] === Number(inputLetter));
+		if (index) outputArray.push(TEXTS[index]);
+	});
+
+	return outputArray.join('');
 }
 
-function getRemainder(input, divisor) {
-	return input / divisor;
-}
-
-// function convertToString(input) {
-// 	return input.toString();
-// }
-
-function isNumber(input) {
-	return typeof input === 'number' && input !== NaN;
-}
 module.exports = {
 	FooBarQix
 };
-
-FooBarQix(6);
