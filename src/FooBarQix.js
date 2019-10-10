@@ -1,4 +1,11 @@
-const { NUMBERS, TEXTS, VARIABLES, EMPTY_STRING } = require('./constants');
+const {
+	NUMBERS,
+	TEXTS,
+	VARIABLES,
+	NUMBER_TEXT_MAP,
+	NUMBER_LIST,
+	EMPTY_STRING
+} = require('./constants');
 const { isDivisible, getRemainder, isNumber } = require('./utils');
 
 function FooBarQix(input) {
@@ -15,10 +22,9 @@ function validate(input) {
 
 function dividedByNumber(input) {
 	let outputArray = [];
-	VARIABLES.forEach((variable) => {
-		let number = NUMBERS[variable];
+	NUMBER_LIST.forEach((number) => {
 		if (isDivisible(input, number)) {
-			outputArray.push(TEXTS[variable]);
+			outputArray.push(NUMBER_TEXT_MAP[number]);
 			input = getRemainder(input, number);
 		}
 	});
@@ -32,8 +38,8 @@ function containsNumber(input) {
 	let inputArray = String(input).split(EMPTY_STRING);
 
 	inputArray.forEach((inputLetter) => {
-		let index = VARIABLES.find((key) => NUMBERS[key] === Number(inputLetter));
-		if (index) outputArray.push(TEXTS[index]);
+		let index = NUMBER_LIST.find((number) => number === Number(inputLetter));
+		if (index) outputArray.push(NUMBER_TEXT_MAP[index]);
 	});
 
 	return outputArray.join(EMPTY_STRING);

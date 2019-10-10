@@ -1,22 +1,15 @@
-const NUMBERS = {
-	foo: 3,
-	bar: 5,
-	qix: 7
+const NUMBER_TEXT_MAP = {
+	3: 'Foo',
+	5: 'Bar',
+	7: 'Qix'
 };
 
-const TEXTS = {
-	foo: 'Foo',
-	bar: 'Bar',
-	qix: 'Qix'
-};
-
-const VARIABLES = [ 'foo', 'bar', 'qix' ];
+const NUMBER_LIST = [ 3, 5, 7 ];
 
 const EMPTY_STRING = '';
 
 module.exports = {
-	NUMBERS,
-	TEXTS,
-    VARIABLES,
-    EMPTY_STRING
+	NUMBER_TEXT_MAP,
+	NUMBER_LIST,
+	EMPTY_STRING
 };
