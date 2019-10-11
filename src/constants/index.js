@@ -4,7 +4,7 @@ const NUMBER_TEXT_MAP = {
 	7: 'Qix'
 };
 
-const NUMBER_LIST = [ 3, 5, 7 ];
+const NUMBER_LIST = Object.keys(NUMBER_TEXT_MAP).map(Number);
 
 const EMPTY_STRING = '';
 
