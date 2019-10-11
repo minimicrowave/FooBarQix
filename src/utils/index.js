@@ -7,7 +7,7 @@ function getRemainder(input, divisor) {
 }
 
 function isNumber(input) {
-	return typeof input === 'number' && input !== NaN;
+	return typeof input === 'number' && !isNaN(input);
 }
 
 module.exports = {
