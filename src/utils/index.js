@@ -8,6 +8,5 @@ function isNumber(input) {
 
 module.exports = {
 	isDivisible,
-	getRemainder,
 	isNumber
 };
