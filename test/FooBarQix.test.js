@@ -5,6 +5,8 @@ describe('FooBarQix', () => {
 	it('Should throw error if input is not a number or empty.', () => {
 		expect(() => FooBarQix()).to.throw('Non numericals not allowed.');
 		expect(() => FooBarQix('hi')).to.throw('Non numericals not allowed.');
+		expect(() => FooBarQix(true)).to.throw('Non numericals not allowed.');
+		expect(() => FooBarQix(NaN)).to.throw('Non numericals not allowed.');
 	});
 
 	it('Should return input number if not divisible and does not contain required number(s)', () => {
