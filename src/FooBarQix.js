@@ -1,5 +1,5 @@
 const { NUMBER_TEXT_MAP, NUMBER_LIST, EMPTY_STRING } = require('./constants');
-const { isDivisible, getRemainder } = require('./utils');
+const { isDivisible } = require('./utils');
 const { validate } = require('./validators');
 
 function FooBarQix(input) {
@@ -12,10 +12,10 @@ function FooBarQix(input) {
 
 function dividedByNumber(input) {
 	let outputArray = [];
+	// Pushes FooBarQix text into output array if divisible by FooBarQix number list
 	NUMBER_LIST.forEach((number) => {
 		if (isDivisible(input, number)) {
 			outputArray.push(NUMBER_TEXT_MAP[number]);
-			input = getRemainder(input, number);
 		}
 	});
 
@@ -28,6 +28,7 @@ function containsNumber(input) {
 	let inputArray = String(input).split(EMPTY_STRING);
 
 	inputArray.forEach((digit) => {
+		// Pushes FooBarQix text into output array if digit is in FooBarQix number list
 		let index = NUMBER_LIST.find((number) => number === Number(digit));
 		if (index) outputArray.push(NUMBER_TEXT_MAP[index]);
 	});
